@@ -27,17 +27,43 @@
      <string>Create</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="nameEdit">
+   <widget class="QLineEdit" name="nameOfFileEdit">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>210</y>
-      <width>113</width>
-      <height>24</height>
+      <x>240</x>
+      <y>340</y>
+      <width>151</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="placeholderText">
-     <string>Name</string>
+     <string>Название файла</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="nameEdit">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>110</y>
+      <width>151</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string>Имя</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="surnameEdit">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>160</y>
+      <width>151</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string>Фамилия</string>
     </property>
    </widget>
   </widget>
@@ -47,9 +73,15 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>Файл</string>
+    </property>
+   </widget>
+   <addaction name="menu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

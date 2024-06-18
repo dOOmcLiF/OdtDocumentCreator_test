@@ -10,6 +10,7 @@
 #include <QDate>
 #include <QTextTableCell>
 #include <QFont>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -25,11 +26,15 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    createsOdf();
+    bool createSuccess = createsOdf();
     //createsOdfWithTable();
+    if (createSuccess) {
+        QMessageBox::information(this, "Успех!", "Файл успешно сохранён!");
+    }
 }
 
-void MainWindow::createsOdf(){
+bool MainWindow::createsOdf(){
+    bool createSuccess = false;
     QTextDocument *doc = new QTextDocument;
     doc->setDocumentMargin(10);
 
@@ -49,6 +54,12 @@ void MainWindow::createsOdf(){
     //header1Format.setFontUnderline(true);
     header1Format.setForeground(QBrush(QColor(Qt::black)));
 
+    QTextCharFormat header2Format = textFormat;
+    header2Format.setFont(QFont("Times"));
+    header2Format.setFontPointSize(14);
+    header2Format.setFontUnderline(true);
+    header2Format.setForeground(QBrush(QColor(Qt::black)));
+
     QTextCharFormat titleFormat = boldFormat;
     titleFormat.setFontPointSize(20);
     //titleFormat.setFontUnderline(true);
@@ -58,6 +69,8 @@ void MainWindow::createsOdf(){
     titleBlockFormat.setAlignment(Qt::AlignHCenter);
     QTextBlockFormat blockFormat = cursor.block().blockFormat();
 
+    QString name = ui->nameEdit->text();
+    QString surname = ui->surnameEdit->text();
 
     //Title of the document
     cursor.insertBlock();
@@ -69,9 +82,11 @@ void MainWindow::createsOdf(){
     cursor.setBlockFormat(blockFormat);
     cursor.insertText(QObject::tr("Текст 1"), header1Format);
     cursor.insertBlock();
-    cursor.insertText(QObject::tr("Фамилия:\t________________"), header1Format);
+    cursor.insertText(QObject::tr("Фамилия:\t"), header1Format);
+    cursor.insertText(surname, header2Format);
     cursor.insertBlock();
-    cursor.insertText(QObject::tr("Имя:\t\t________________"), header1Format);
+    cursor.insertText(QObject::tr("Имя:\t\t"), header1Format);
+    cursor.insertText(name, header2Format);
     cursor.insertBlock();
     cursor.insertText("Автор:\tЯ");
     cursor.insertBlock();
@@ -82,11 +97,21 @@ void MainWindow::createsOdf(){
 
     cursor.movePosition(QTextCursor::End);
 
-    QTextDocumentWriter writer("test2.odt");
+    QString nameOfFile = ui->nameOfFileEdit->text();
+
+
+    if (nameOfFile.trimmed().isEmpty()) {
+        QMessageBox::warning(this, "Ошибка!", "Название файла не может быть пустым!");
+        return false;
+    }
+
+    QTextDocumentWriter writer(nameOfFile + ".odt");
     writer.setFormat("odf");
     writer.write(doc);
+    createSuccess = true;
 
     delete doc;
+    return createSuccess;
 }
 
 void MainWindow::createsOdfWithTable(){

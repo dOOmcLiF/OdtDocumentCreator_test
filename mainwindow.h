@@ -23,6 +23,6 @@ private slots:
 private:
     Ui::MainWindow *ui;
     void createsOdfWithTable();
-    void createsOdf();
+    bool createsOdf();
 };
 #endif // MAINWINDOW_H
