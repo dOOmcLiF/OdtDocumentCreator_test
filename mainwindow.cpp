@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "config.h"
 
 #include <QString>
 #include <QTextStream>
@@ -17,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    setWindowTitle(Config::applicationName);
 }
 
 MainWindow::~MainWindow()
@@ -84,9 +86,11 @@ bool MainWindow::createsOdf(){
     cursor.insertBlock();
     cursor.insertText(QObject::tr("Фамилия:\t"), header1Format);
     cursor.insertText(surname, header2Format);
+    cursor.insertText(QObject::tr("_________"), header2Format);
     cursor.insertBlock();
     cursor.insertText(QObject::tr("Имя:\t\t"), header1Format);
     cursor.insertText(name, header2Format);
+    cursor.insertText(QObject::tr("_________"), header2Format);
     cursor.insertBlock();
     cursor.insertText("Автор:\tЯ");
     cursor.insertBlock();
@@ -222,3 +226,20 @@ void MainWindow::createsOdfWithTable(){
 
     delete doc;
 }
+
+void MainWindow::on_action_triggered()
+{
+    QMessageBox aboutDlg(this);
+    aboutDlg.setTextFormat(Qt::RichText);
+    aboutDlg.setWindowTitle(tr("О программе %1").arg(Config::applicationName));
+    aboutDlg.setIcon(QMessageBox::Information);
+    aboutDlg.setText(tr("%1 %2<br>"
+                        "Автор: <a href=\"https://t.me/dOOmcLiF_tg\">Денис Безпалый</a>, 2024.<br>"
+                        "This application is dynamically linked against the "
+                        "<a href=\"https://www.qt.io/developers/\">Qt Library</a> "
+                        "v. %3, which is under the LGPLv3 license.<br>")
+                         .arg(Config::applicationName).arg(Config::applicationVersion)
+                         .arg(qVersion()));
+    aboutDlg.exec();
+}
+
