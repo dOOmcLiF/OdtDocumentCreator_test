@@ -26,5 +26,6 @@ private:
     Ui::MainWindow *ui;
     void createsOdfWithTable();
     bool createsOdf();
+    void getHwid();
 };
 #endif // MAINWINDOW_H

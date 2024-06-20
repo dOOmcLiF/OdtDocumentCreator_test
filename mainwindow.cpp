@@ -12,6 +12,9 @@
 #include <QTextTableCell>
 #include <QFont>
 #include <QMessageBox>
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QNetworkReply>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -19,6 +22,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     setWindowTitle(Config::applicationName);
+
+    getHwid();
 }
 
 MainWindow::~MainWindow()
@@ -238,8 +243,41 @@ void MainWindow::on_action_triggered()
                         "This application is dynamically linked against the "
                         "<a href=\"https://www.qt.io/developers/\">Qt Library</a> "
                         "v. %3, which is under the LGPLv3 license.<br>")
-                         .arg(Config::applicationName).arg(Config::applicationVersion)
-                         .arg(qVersion()));
+                         .arg(Config::applicationName, Config::applicationVersion, qVersion()));
     aboutDlg.exec();
+}
+
+void MainWindow::getHwid()
+{
+    QString hwid = QSysInfo::machineUniqueId();
+    ui->label->setText(hwid);
+
+    QEventLoop loop;
+    QNetworkAccessManager nam;
+    QNetworkRequest req(QUrl("https://raw.githubusercontent.com/dOOmcLiF/Mods/main/files/hwid's2"));
+    QNetworkReply *reply = nam.get(req);
+    connect(reply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
+    loop.exec();
+    QByteArray buffer = reply->readAll();
+
+    qDebug() << "what did i get" << buffer.trimmed();
+
+    QString ips = buffer;
+    QStringList lines = ips.split("\n");
+    qDebug() << lines;
+
+    bool found = false;
+    for (const QString& line : lines) {
+        if (line.trimmed() == hwid) {
+            found = true;
+            break;
+        }
+    }
+
+    if (found) {
+        qDebug() << "HWID found in the list";
+    } else {
+        qDebug() << "HWID not found in the list";
+    }
 }
 
