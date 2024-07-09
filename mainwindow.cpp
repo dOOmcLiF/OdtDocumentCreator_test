@@ -18,6 +18,14 @@
 
 #include <QFileDialog>
 
+#include <QTextBrowser>
+#include <QFile>
+#include <QTextStream>
+#include <QVBoxLayout>
+
+#include <QTemporaryFile>
+#include <QDir>
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -35,14 +43,26 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_createButton_clicked()
 {
-    bool createSuccess = createsOdf();
-    //createsOdfWithTable();
+    QString nameOfFile = QFileDialog::getSaveFileName(this,
+        tr("Сохранить файл"),
+        "",
+        tr("ODT файлы (*.odt);;Все файлы (*)"));
+
+    if (nameOfFile.isEmpty())
+        return;
+
+    if (!nameOfFile.endsWith(".odt", Qt::CaseInsensitive))
+        nameOfFile += ".odt";
+
+    bool createSuccess = createsOdf(nameOfFile);
+
     if (createSuccess) {
         QMessageBox::information(this, "Успех!", "Файл успешно сохранён!");
     }
+
 }
 
-bool MainWindow::createsOdf(){
+bool MainWindow::createsOdf(const QString &fileName){
     bool createSuccess = false;
     QTextDocument *doc = new QTextDocument;
     doc->setDocumentMargin(10);
@@ -108,16 +128,16 @@ bool MainWindow::createsOdf(){
 
     cursor.movePosition(QTextCursor::End);
 
-    QString nameOfFile = ui->nameOfFileEdit->text();
+//    QString nameOfFile = ui->nameOfFileEdit->text();
 
 
-    if (nameOfFile.trimmed().isEmpty()) {
-        QMessageBox::warning(this, "Ошибка!", "Название файла не может быть пустым!");
-        return false;
-    }
+//    if (nameOfFile.trimmed().isEmpty()) {
+//        QMessageBox::warning(this, "Ошибка!", "Название файла не может быть пустым!");
+//        return false;
+//    }
 
-    QTextDocumentWriter writer(nameOfFile + ".html");
-    writer.setFormat("html");
+    QTextDocumentWriter writer(fileName);
+    writer.setFormat("odf");
     writer.write(doc);
     createSuccess = true;
 
@@ -234,7 +254,7 @@ void MainWindow::createsOdfWithTable(){
     delete doc;
 }
 
-void MainWindow::on_action_triggered()
+void MainWindow::on_aboutAction_triggered()
 {
     QMessageBox aboutDlg(this);
     aboutDlg.setTextFormat(Qt::RichText);
@@ -289,12 +309,125 @@ void MainWindow::on_openButton_clicked()
     QString fileName = QFileDialog::getOpenFileName(this,
         tr("Выберите файл"),
         "",
-        tr("Все файлы (*.*)"));
+        tr("HTML файлы (*.html *.htm);;Все файлы (*.*)"));
 
     if (!fileName.isEmpty())
     {
         ui->fileNameLabel->setText(fileName);
         qDebug() << "Выбранный файл:" << fileName;
+        previewHtmlFile(fileName);
+    }
+}
+
+void MainWindow::previewHtmlFile(const QString &fileName)
+{
+    QFile file(fileName);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        QMessageBox::warning(this, tr("Ошибка"), tr("Не удалось открыть файл."));
+        return;
+    }
+
+    QTextStream in(&file);
+    QString htmlContent = in.readAll();
+    file.close();
+
+    QTextBrowser *previewWidget = new QTextBrowser(this);
+    previewWidget->setOpenExternalLinks(false);
+    previewWidget->setHtml(htmlContent);
+
+    QDialog *previewDialog = new QDialog(this);
+    QVBoxLayout *layout = new QVBoxLayout(previewDialog);
+    layout->addWidget(previewWidget);
+    previewDialog->setLayout(layout);
+    previewDialog->setWindowTitle(tr("Предпросмотр HTML"));
+    previewDialog->resize(800, 600);
+    previewDialog->show();
+}
+
+void MainWindow::on_previewButton_clicked()
+{
+    // Создаем временный HTML файл
+    QTemporaryFile tempFile(QDir::tempPath() + "/preview_XXXXXX.html");
+    tempFile.setAutoRemove(false);  // Не удалять файл автоматически
+    if (tempFile.open()) {
+        QString tempFileName = tempFile.fileName();
+        tempFile.close();
+
+        // Создаем документ и заполняем его содержимым
+        QTextDocument *doc = new QTextDocument;
+        doc->setDocumentMargin(10);
+
+        QTextCursor cursor(doc);
+        cursor.movePosition(QTextCursor::Start);
+
+        // Копируем форматирование и вставку текста из функции createsOdf
+        QTextCharFormat textFormat;
+        textFormat.setFont(QFont("Times"));
+
+        QTextCharFormat boldFormat;
+        boldFormat.setFont(QFont("Times New Roman", 15, QFont::Bold));
+
+        QTextCharFormat header1Format = textFormat;
+        header1Format.setFont(QFont("Times"));
+        header1Format.setFontPointSize(14);
+        header1Format.setForeground(QBrush(QColor(Qt::black)));
+
+        QTextCharFormat header2Format = textFormat;
+        header2Format.setFont(QFont("Times"));
+        header2Format.setFontPointSize(14);
+        header2Format.setFontUnderline(true);
+        header2Format.setForeground(QBrush(QColor(Qt::black)));
+
+        QTextCharFormat titleFormat = boldFormat;
+        titleFormat.setFontPointSize(20);
+        titleFormat.setForeground(QBrush(QColor(Qt::black)));
+
+        QTextBlockFormat titleBlockFormat = cursor.block().blockFormat();
+        titleBlockFormat.setAlignment(Qt::AlignHCenter);
+        QTextBlockFormat blockFormat = cursor.block().blockFormat();
+
+        QString name = ui->nameEdit->text();
+        QString surname = ui->surnameEdit->text();
+
+        // Вставляем содержимое
+        cursor.insertBlock();
+        cursor.setBlockCharFormat(titleFormat);
+        cursor.setBlockFormat(titleBlockFormat);
+        cursor.insertText(QObject::tr("Заголовок файла ахахаххаха"));
+        cursor.insertBlock();
+
+        cursor.setBlockFormat(blockFormat);
+        cursor.insertText(QObject::tr("Текст 1"), header1Format);
+        cursor.insertBlock();
+        cursor.insertText(QObject::tr("Фамилия:\t"), header1Format);
+        cursor.insertText(surname, header2Format);
+        cursor.insertText(QObject::tr("_________"), header2Format);
+        cursor.insertBlock();
+        cursor.insertText(QObject::tr("Имя:\t\t"), header1Format);
+        cursor.insertText(name, header2Format);
+        cursor.insertText(QObject::tr("_________"), header2Format);
+        cursor.insertBlock();
+        cursor.insertText("Автор:\tЯ");
+        cursor.insertBlock();
+        cursor.insertText("Версия:\tЯ");
+        cursor.insertBlock();
+        cursor.insertText("Дата:\t" + QDate::currentDate().toString("dd.MM.yyyy"));
+        cursor.insertBlock();
+
+        // Сохраняем документ во временный HTML файл
+        QTextDocumentWriter writer(tempFileName);
+        writer.setFormat("html");
+        if (writer.write(doc)) {
+            // Показываем предпросмотр
+            previewHtmlFile(tempFileName);
+        } else {
+            QMessageBox::warning(this, tr("Ошибка"), tr("Не удалось создать временный файл для предпросмотра."));
+        }
+
+        delete doc;
+    } else {
+        QMessageBox::warning(this, tr("Ошибка"), tr("Не удалось создать временный файл."));
     }
 }
 

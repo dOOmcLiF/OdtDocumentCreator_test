@@ -20,14 +20,17 @@ public:
 private slots:
     void on_createButton_clicked();
 
-    void on_action_triggered();
+    void on_aboutAction_triggered();
 
     void on_openButton_clicked();
+
+    void on_previewButton_clicked();
 
 private:
     Ui::MainWindow *ui;
     void createsOdfWithTable();
-    bool createsOdf();
+    bool createsOdf(const QString &fileName);
     void getHwid();
+    void previewHtmlFile(const QString &fileName);
 };
 #endif // MAINWINDOW_H

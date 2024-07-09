@@ -27,19 +27,6 @@
      <string>Создать</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="nameOfFileEdit">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>210</y>
-      <width>151</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="placeholderText">
-     <string>Название файла</string>
-    </property>
-   </widget>
    <widget class="QLineEdit" name="nameEdit">
     <property name="geometry">
      <rect>
@@ -105,6 +92,19 @@
      <string>TextLabel</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="previewButton">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>440</y>
+      <width>121</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Предпросмотр</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -124,13 +124,13 @@
     <property name="title">
      <string>Помощь</string>
     </property>
-    <addaction name="action"/>
+    <addaction name="aboutAction"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_2"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="action">
+  <action name="aboutAction">
    <property name="checkable">
     <bool>false</bool>
    </property>
@@ -139,6 +139,13 @@
    </property>
   </action>
  </widget>
+ <tabstops>
+  <tabstop>nameEdit</tabstop>
+  <tabstop>surnameEdit</tabstop>
+  <tabstop>createButton</tabstop>
+  <tabstop>openButton</tabstop>
+  <tabstop>previewButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
