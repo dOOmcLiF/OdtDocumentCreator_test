@@ -16,6 +16,8 @@
 #include <QNetworkRequest>
 #include <QNetworkReply>
 
+#include <QFileDialog>
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -31,7 +33,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_createButton_clicked()
 {
     bool createSuccess = createsOdf();
     //createsOdfWithTable();
@@ -114,8 +116,8 @@ bool MainWindow::createsOdf(){
         return false;
     }
 
-    QTextDocumentWriter writer(nameOfFile + ".odt");
-    writer.setFormat("odf");
+    QTextDocumentWriter writer(nameOfFile + ".html");
+    writer.setFormat("html");
     writer.write(doc);
     createSuccess = true;
 
@@ -239,7 +241,7 @@ void MainWindow::on_action_triggered()
     aboutDlg.setWindowTitle(tr("О программе %1").arg(Config::applicationName));
     aboutDlg.setIcon(QMessageBox::Information);
     aboutDlg.setText(tr("%1 %2<br>"
-                        "Автор: <a href=\"https://t.me/dOOmcLiF_tg\">Денис Безпалый</a>, 2024.<br>"
+                        "Автор: <a href=\"https://t.me/dOOmcLiF_tg\">dOOmcLiF</a>, 2024.<br>"
                         "This application is dynamically linked against the "
                         "<a href=\"https://www.qt.io/developers/\">Qt Library</a> "
                         "v. %3, which is under the LGPLv3 license.<br>")
@@ -250,11 +252,11 @@ void MainWindow::on_action_triggered()
 void MainWindow::getHwid()
 {
     QString hwid = QSysInfo::machineUniqueId();
-    ui->label->setText(hwid);
+    ui->hwidLabel->setText(hwid);
 
     QEventLoop loop;
     QNetworkAccessManager nam;
-    QNetworkRequest req(QUrl("https://raw.githubusercontent.com/dOOmcLiF/Mods/main/files/hwid's2"));
+    QNetworkRequest req(QUrl("https://raw.githubusercontent.com/dOOmcLiF/Mods/main/files/hwid's"));
     QNetworkReply *reply = nam.get(req);
     connect(reply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
     loop.exec();
@@ -278,6 +280,21 @@ void MainWindow::getHwid()
         qDebug() << "HWID found in the list";
     } else {
         qDebug() << "HWID not found in the list";
+    }
+}
+
+
+void MainWindow::on_openButton_clicked()
+{
+    QString fileName = QFileDialog::getOpenFileName(this,
+        tr("Выберите файл"),
+        "",
+        tr("Все файлы (*.*)"));
+
+    if (!fileName.isEmpty())
+    {
+        ui->fileNameLabel->setText(fileName);
+        qDebug() << "Выбранный файл:" << fileName;
     }
 }
 
