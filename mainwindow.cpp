@@ -2,29 +2,7 @@
 #include "ui_mainwindow.h"
 #include "config.h"
 
-#include <QString>
-#include <QTextStream>
-#include <QTextDocument>
-#include <QTextDocumentWriter>
-#include <QTextCursor>
-#include <QTextBlock>
-#include <QDate>
-#include <QTextTableCell>
-#include <QFont>
-#include <QMessageBox>
-#include <QNetworkAccessManager>
-#include <QNetworkRequest>
-#include <QNetworkReply>
 
-#include <QFileDialog>
-
-#include <QTextBrowser>
-#include <QFile>
-#include <QTextStream>
-#include <QVBoxLayout>
-
-#include <QTemporaryFile>
-#include <QDir>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -32,7 +10,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     setWindowTitle(Config::applicationName);
-
     getHwid();
 }
 

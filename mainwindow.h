@@ -3,6 +3,30 @@
 
 #include <QMainWindow>
 
+#include <QString>
+#include <QTextStream>
+#include <QTextDocument>
+#include <QTextDocumentWriter>
+#include <QTextCursor>
+#include <QTextBlock>
+#include <QDate>
+#include <QTextTableCell>
+#include <QFont>
+#include <QMessageBox>
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QFileDialog>
+#include <QTextBrowser>
+#include <QFile>
+#include <QTextStream>
+#include <QVBoxLayout>
+#include <QTemporaryFile>
+#include <QDir>
+
+#include <QtCore>
+#include <QtGui>
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
