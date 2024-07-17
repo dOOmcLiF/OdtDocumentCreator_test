@@ -1,8 +1,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
+#include "createjointexamination.h"
 
+#include <QMainWindow>
 #include <QString>
 #include <QTextStream>
 #include <QTextDocument>
@@ -23,7 +24,6 @@
 #include <QVBoxLayout>
 #include <QTemporaryFile>
 #include <QDir>
-
 #include <QtCore>
 #include <QtGui>
 
@@ -52,9 +52,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    void createsOdfWithTable();
-    bool createsOdf(const QString &fileName);
     void getHwid();
-    void previewHtmlFile(const QString &fileName);
+    CreateJointExamination cje;
 };
 #endif // MAINWINDOW_H
