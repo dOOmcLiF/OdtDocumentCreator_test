@@ -23,6 +23,9 @@
       <height>851</height>
      </rect>
     </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
     <widget class="QWidget" name="page">
      <widget class="QLineEdit" name="surnameEdit">
       <property name="geometry">
@@ -183,6 +186,24 @@
         <height>171</height>
        </rect>
       </property>
+      <property name="html">
+       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:700;&quot;&gt;Страховой анамнез:&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; В ЛВН нуждается. Венерические заболевания,  туберкулез, ВИЧ, отрицает. Хронические заболевания: Сахарный диабет 1 типа.  Травмы отрицает, операции: отрицает. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:700;&quot;&gt;Гемотрансфузия&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt; не проводилась. &lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:700;&quot;&gt;Аллергические реакции на препараты:&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;  отрицает. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;За последние 3 недели в контакте с инфекционными больными не был. Корью не болел, привит. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:700;&quot;&gt;Status praesens objectivus&lt;/span&gt; &lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Общее состояние удовлетворительное. Кожные покровы и видимые слизистые обычной окраски. Костно-суставная система без видимой патологии.&lt;/span&gt; &lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;В легких дыхание везикулярное, хрипов нет, ЧДД – 17 в мин. Тоны сердца ясные, ритмичные, ЧСС –72 ударов в минуту, АД – 125/75мм рт ст. Поясничная область не изменена. Почки не пальпируются. Поколачивание по косто-вертебральным углам безболезненное с обеих сторон. Мочеиспускание свободное, безболезненное.              &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Язык влажный, чистый, налет есть, нет. Живот не вздут, обычной формы, симметричный.&lt;/span&gt; &lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;При пальпации мягкий, безболезненный во всех отделах. Печень по краю реберной дуги, при пальпации безболезненная. Селезенка не пальпируется. Симптом Щеткина-Блюмберга отрицательный во всех отделах. Перкуторно тимпанита и притупления в отлогих местах нет. Перистальтика выслушивается, удовлетворительная.&lt;/span&gt; &lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Стул оформленный, регулярный, без патологических примесей.&lt;/span&gt; &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
       <property name="placeholderText">
        <string>Anamnesis vitae</string>
       </property>
@@ -191,7 +212,7 @@
       <property name="geometry">
        <rect>
         <x>420</x>
-        <y>144</y>
+        <y>140</y>
         <width>331</width>
         <height>171</height>
        </rect>
@@ -237,6 +258,24 @@
       </property>
       <property name="placeholderText">
        <string>План лечения</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>20</y>
+        <width>231</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Совместный осмотр</string>
       </property>
      </widget>
     </widget>
