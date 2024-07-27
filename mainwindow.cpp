@@ -71,7 +71,6 @@ void MainWindow::on_aboutAction_triggered()
 void MainWindow::getHwid()
 {
     QString hwid = QSysInfo::machineUniqueId();
-    ui->hwidLabel->setText(hwid);
 
     QEventLoop loop;
     QNetworkAccessManager nam;
@@ -112,7 +111,6 @@ void MainWindow::on_openButton_clicked()
 
     if (!fileName.isEmpty())
     {
-        ui->fileNameLabel->setText(fileName);
         qDebug() << "Выбранный файл:" << fileName;
         //previewHtmlFile(fileName);
     }
@@ -158,5 +156,25 @@ void MainWindow::on_previewButton_clicked()
     } else {
         QMessageBox::warning(this, tr("Ошибка"), tr("Не удалось создать файл для предпросмотра."));
     }
+}
+
+
+void MainWindow::on_nextButton_clicked()
+{
+    int currentIndex = ui->stackedWidget->currentIndex();
+    int pageCount = ui->stackedWidget->count();
+
+    int nextIndex = (currentIndex + 1) % pageCount;
+    ui->stackedWidget->setCurrentIndex(nextIndex);
+}
+
+
+void MainWindow::on_prevButton_clicked()
+{
+    int currentIndex = ui->stackedWidget->currentIndex();
+    int pageCount = ui->stackedWidget->count();
+
+    int nextIndex = (currentIndex - 1) % pageCount;
+    ui->stackedWidget->setCurrentIndex(nextIndex);
 }
 

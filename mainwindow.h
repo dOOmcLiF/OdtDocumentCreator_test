@@ -50,6 +50,10 @@ private slots:
 
     void on_previewButton_clicked();
 
+    void on_nextButton_clicked();
+
+    void on_prevButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     void getHwid();

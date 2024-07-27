@@ -18,9 +18,9 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>0</y>
+      <y>30</y>
       <width>1191</width>
-      <height>851</height>
+      <height>821</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -31,7 +31,7 @@
       <property name="geometry">
        <rect>
         <x>50</x>
-        <y>90</y>
+        <y>110</y>
         <width>151</width>
         <height>31</height>
        </rect>
@@ -44,7 +44,7 @@
       <property name="geometry">
        <rect>
         <x>50</x>
-        <y>40</y>
+        <y>50</y>
         <width>151</width>
         <height>31</height>
        </rect>
@@ -63,7 +63,7 @@
      <widget class="QPushButton" name="createButton">
       <property name="geometry">
        <rect>
-        <x>990</x>
+        <x>1050</x>
         <y>710</y>
         <width>80</width>
         <height>24</height>
@@ -76,7 +76,7 @@
      <widget class="QPushButton" name="openButton">
       <property name="geometry">
        <rect>
-        <x>990</x>
+        <x>1050</x>
         <y>750</y>
         <width>80</width>
         <height>24</height>
@@ -89,7 +89,7 @@
      <widget class="QPushButton" name="previewButton">
       <property name="geometry">
        <rect>
-        <x>970</x>
+        <x>1030</x>
         <y>790</y>
         <width>121</width>
         <height>29</height>
@@ -99,37 +99,11 @@
        <string>Предпросмотр</string>
       </property>
      </widget>
-     <widget class="QLabel" name="fileNameLabel">
-      <property name="geometry">
-       <rect>
-        <x>80</x>
-        <y>780</y>
-        <width>401</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="hwidLabel">
-      <property name="geometry">
-       <rect>
-        <x>80</x>
-        <y>730</y>
-        <width>351</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-     </widget>
      <widget class="QLineEdit" name="therapistEdit">
       <property name="geometry">
        <rect>
-        <x>780</x>
-        <y>140</y>
+        <x>790</x>
+        <y>180</y>
         <width>171</width>
         <height>31</height>
        </rect>
@@ -141,8 +115,8 @@
      <widget class="QLineEdit" name="headOfDepartmentEdit">
       <property name="geometry">
        <rect>
-        <x>780</x>
-        <y>200</y>
+        <x>790</x>
+        <y>240</y>
         <width>171</width>
         <height>31</height>
        </rect>
@@ -155,7 +129,7 @@
       <property name="geometry">
        <rect>
         <x>50</x>
-        <y>140</y>
+        <y>180</y>
         <width>331</width>
         <height>171</height>
        </rect>
@@ -168,7 +142,7 @@
       <property name="geometry">
        <rect>
         <x>50</x>
-        <y>330</y>
+        <y>380</y>
         <width>331</width>
         <height>171</height>
        </rect>
@@ -181,9 +155,9 @@
       <property name="geometry">
        <rect>
         <x>50</x>
-        <y>520</y>
+        <y>580</y>
         <width>331</width>
-        <height>171</height>
+        <height>181</height>
        </rect>
       </property>
       <property name="html">
@@ -212,7 +186,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="geometry">
        <rect>
         <x>420</x>
-        <y>140</y>
+        <y>180</y>
         <width>331</width>
         <height>171</height>
        </rect>
@@ -225,7 +199,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="geometry">
        <rect>
         <x>420</x>
-        <y>330</y>
+        <y>380</y>
         <width>331</width>
         <height>91</height>
        </rect>
@@ -238,7 +212,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="geometry">
        <rect>
         <x>420</x>
-        <y>440</y>
+        <y>500</y>
         <width>331</width>
         <height>121</height>
        </rect>
@@ -251,7 +225,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="geometry">
        <rect>
         <x>420</x>
-        <y>580</y>
+        <y>650</y>
         <width>331</width>
         <height>111</height>
        </rect>
@@ -265,7 +239,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <rect>
         <x>440</x>
         <y>20</y>
-        <width>231</width>
+        <width>341</width>
         <height>61</height>
        </rect>
       </property>
@@ -275,11 +249,232 @@ li.checked::marker { content: &quot;\2612&quot;; }
        </font>
       </property>
       <property name="text">
-       <string>Совместный осмотр</string>
+       <string>Совместный осмотр с зав/отд</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>30</y>
+        <width>81</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Дата осмотра</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>90</y>
+        <width>141</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Фамилия И.О. больного</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>160</y>
+        <width>141</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Жалобы</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>360</y>
+        <width>141</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Anamnesis morbi</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>560</y>
+        <width>141</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Anamnesis vitae</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>160</y>
+        <width>141</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>St. localis</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>360</y>
+        <width>141</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Диагноз</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>480</y>
+        <width>141</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>План обследования</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>630</y>
+        <width>141</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>План лечения</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_11">
+      <property name="geometry">
+       <rect>
+        <x>790</x>
+        <y>160</y>
+        <width>141</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Леч. врач</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_12">
+      <property name="geometry">
+       <rect>
+        <x>790</x>
+        <y>220</y>
+        <width>141</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Зав. отделением</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_2"/>
+    <widget class="QWidget" name="page_2">
+     <widget class="QLabel" name="label_13">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>20</y>
+        <width>241</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Ректороманоскопия</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_14">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>30</y>
+        <width>81</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Дата осмотра</string>
+      </property>
+     </widget>
+     <widget class="QDateTimeEdit" name="dateTimeEdit_2">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>50</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="dateTime">
+       <datetime>
+        <hour>0</hour>
+        <minute>0</minute>
+        <second>0</second>
+        <year>2024</year>
+        <month>1</month>
+        <day>1</day>
+       </datetime>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="nextButton">
+    <property name="geometry">
+     <rect>
+      <x>1142</x>
+      <y>0</y>
+      <width>51</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>След.</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="prevButton">
+    <property name="geometry">
+     <rect>
+      <x>1080</x>
+      <y>0</y>
+      <width>51</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Пред.</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
