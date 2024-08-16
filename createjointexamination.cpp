@@ -82,47 +82,48 @@ QTextDocument* CreateJointExamination::createDocument(const QString &dateTime, c
     QTextBlockFormat blockFormat = cursor.block().blockFormat();
 
     //Title of the document
-    //cursor.insertBlock();
+    //cursor.insertHtml(QObject::tr("<br/> "));
     cursor.insertText(dateTime, title1Format);
     cursor.insertText(QObject::tr("\t\t"));
     cursor.insertText(QObject::tr("Совместный осмотр с зав/отд колопроктологии"), title1Format);
-    cursor.insertBlock(); //new line
+    cursor.insertHtml(QObject::tr("<br/> ")); //new line
 
     cursor.setBlockFormat(blockFormat);
     cursor.insertText(QObject::tr("Жалобы: "), title2Format);
     cursor.insertText(complaints,header2Format);
-    cursor.insertBlock();
+    cursor.insertHtml(QObject::tr("<br/> "));
     cursor.insertText(QObject::tr("Anamnesis morbi: "), title2Format);
     cursor.insertText(anamnesisMorbi, header2Format);
-    cursor.insertBlock();
+    cursor.insertHtml(QObject::tr("<br/> "));
     cursor.insertText(QObject::tr("Anamnesis vitae: "), title1Format);
     cursor.insertText(anamnesisVitae, header1Format);
-    cursor.insertBlock();
+    cursor.insertHtml(QObject::tr("<br/> "));
     cursor.insertText(QObject::tr("St. localis: "), title2Format);
     cursor.insertText(stLocalis, header2Format);
-    cursor.insertBlock();
+    cursor.insertHtml(QObject::tr("<br/> "));
     cursor.insertText(QObject::tr("Диагноз: "), title1Format);
     cursor.insertText(diagnosis, title1Format);
     cursor.insertBlock();
     cursor.insertText(QObject::tr("План обследования: "), title1Format);
-    cursor.insertBlock();
+    cursor.insertHtml(QObject::tr("<br/> "));
     cursor.insertText(examinationPlan, header1Format);
     cursor.insertBlock();
     cursor.insertText(QObject::tr("План лечения: "), title1Format);
-    cursor.insertBlock();
+    cursor.insertHtml(QObject::tr("<br/> "));
     cursor.insertText(treatmentPlan, header1Format);
-    cursor.insertBlock();
-    cursor.insertBlock();
+    cursor.insertHtml(QObject::tr("<br/> "));
+    cursor.insertHtml(QObject::tr("<br/> "));
     cursor.insertText(QObject::tr("\t\t\t\t\t\t"));
     cursor.insertText(QObject::tr("Леч. врач: "), header1Format);
     cursor.insertText(QObject::tr("______________________"), header1Format);
     cursor.insertText(therapisht, header1Format);
-    cursor.insertBlock();
+    cursor.insertHtml(QObject::tr("<br/> "));
     cursor.insertText(QObject::tr("\t\t\t\t\t\t"));
     cursor.insertText(QObject::tr("Зав. отделением: "), header1Format);
     cursor.insertText(QObject::tr("______________________"), header1Format);
     cursor.insertText(headOfDepartment, header1Format);
-
+    //cursor.insertHtml(QObject::tr("<br/> "));
+    //cursor.insertBlock();
     cursor.movePosition(QTextCursor::End);
 
 
