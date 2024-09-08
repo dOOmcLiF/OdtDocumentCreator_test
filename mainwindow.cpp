@@ -45,6 +45,8 @@ void MainWindow::on_createButton_clicked()
 
     bool createSuccess = cje.createsOdf(nameOfFile, dateTime, surname, complaints, anamnesisMorbi, anamnesisVitae, stLocalis, diagnosis, treatmentPlan, examinationPlan, therapist, headOfDepartment);
 
+
+
     if (createSuccess) {
         QMessageBox::information(this, "Успех!", "Файл успешно сохранён!");
     }
